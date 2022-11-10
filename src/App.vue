@@ -34,20 +34,29 @@ export default {
       id: 0,
     };
   },
+
+  async mounted(){
+    const data = await localStorage.getItem('todos')
+    data ? this.todos = JSON.parse(data) : null
+  },
+
   methods: {
     addTodo(){
-      if (this.todo !=""){
+      if (this.todo !=''){
         this.todos.push({
           id:this.id,
           text:this.todo,
           isComplete: this.isDone,
-      });
+      })
+
+        localStorage.setItem('todos',JSON.stringify(this.todos))
       }
       this.todo="";
     },
     removeTodo(index){
       console.log(index);
       this.todos.splice(index,1);
+      localStorage.setItem('todos',JSON.stringify(this.todos))
     }
   }
 };
