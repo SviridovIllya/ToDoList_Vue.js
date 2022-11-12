@@ -3,7 +3,7 @@
     <h1 class="title">{{title}}</h1>
     <div class="todo">
       <input v-model="todo" type="text" placeholder="type todo..."/>
-      <button @click="addTodo(id++)">add todo</button>
+      <button @click="addTodo(id++)">Add Task</button>
       <div v-for="(todo, i) in todos" :key="todo.id">
         <p>
           <span class="todo__id"> {{i+1}}.</span>
@@ -19,6 +19,7 @@
       </div>
       <hr>
       <p>Task: {{todos.length}}</p>
+      <p>Double click to delete</p>
     </div>
   </div>
 </template>
@@ -27,7 +28,6 @@
 export default {
   data(){
     return{
-      title: "Todo app",
       todo: " ",
       todos: [],
       isDone: false,
